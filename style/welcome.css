@@ -1,0 +1,314 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #D8557B;
+}
+
+header nav{
+    display: flex;
+    gap: 40px;
+}
+
+header div #btn-open-nav-mobile{
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: #C22852;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+header nav ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 20px;
+}
+
+header nav ul li a{
+    text-decoration: none;
+    color: #f1f1f1;
+    transition: all ease 0.3s;
+}
+
+header nav ul li a:hover{
+    border-bottom: 3px solid rgb(255, 255, 255);
+    padding-bottom: 2rem;
+}
+
+header div:nth-child(3){
+    font-size: 20px;
+}
+
+header div a{
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #f1f1f1;
+    font-weight: bold;
+    background-color: #C22852;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: all ease 0.3s;
+}
+
+header div a:hover{
+    background-color: #bb1541;
+}
+
+main .container-slider-types-cakes{
+    width: 100%;
+
+}
+
+main .container-slider-types-cakes img{
+    width: 100%;
+    height: 70vh;
+    filter: brightness(50%);
+}
+
+main .container-slider-types-cakes .content-banner{
+    width: 100%;
+    position: absolute;
+    top: 30%;
+    text-align: center;
+}
+
+main .container-slider-types-cakes .title-banner{
+    font-size: 50px;
+    color: #f1f1f1;
+}
+
+main .container-slider-types-cakes .btn-banner{
+    font-size: 20px;
+    background-color: #bb1541;
+    color: #f1f1f1;
+    margin-top: 2rem;
+    border-radius: 6px;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+main .container-slider-types-cakes .btn-banner:hover{
+    background-color: #8d0328;
+}
+
+main .container-products h1{
+    text-align: center;
+    font-size: 35px;
+    margin-top: 2rem;
+}
+
+main .container-products .content-products{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+main .container-products .content-products .card-product{
+    width: 300px;
+    border-radius: 2px;
+    background-color: #F2E7DA;
+    padding: 1rem;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+}
+
+main .container-products .content-products .card-product img{
+    width: 100%;
+    height: 180px;
+}
+
+main .container-products .content-products .card-product h3{
+    font-size: 20px;
+    margin: 1rem 0;
+    color: #c24a6a;
+}
+
+main .container-products .content-products .card-product button{
+    font-size: 16px;
+    background-color: #bb1541;
+    color: #f1f1f1;
+    border-radius: 6px;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+main .container-products .content-products .card-product button:hover{
+    background-color: #8d0328;
+}
+
+main .container-about-us{
+    margin: 4rem 0;
+}
+
+main .container-about-us > h1{
+    text-align: center;
+    font-size: 35px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+main .container-about-us .content-about-us{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0 2rem;
+}
+
+main .container-about-us .content-about-us .content-description-about{
+    width: 750px;
+}
+
+main .container-about-us .content-about-us .content-description-about p{
+    font-size: 29px;
+    color: #4b4b4b;
+}
+
+main .container-about-us .content-about-us .content-img-integrant img{
+    width: 400px;
+    border-radius: 5px;
+}
+
+main .container-about-us .content-button-about{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+main .container-about-us .content-button-about button{
+    padding: 0.8rem 1rem;
+    font-size: 25px;
+    border-radius: 5px;
+    border: none;
+    background-color: #bb1541;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #D8557B;
+    padding: 2rem;
+}
+
+footer .content-map{
+    width: 500px;
+}
+
+footer .content-map iframe{
+    width: 100%;
+    height: 300px;
+}
+
+@media(max-width: 850px){
+    header{
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media(max-width: 768px){
+    main .container-about-us .content-about-us{
+        flex-direction: column;
+        text-align: center;
+        height: 350px;
+    }
+
+    main .container-about-us .content-about-us .content-description-about{
+        width: 100%;
+    }
+
+    main .container-about-us .content-about-us .content-description-about p{
+        font-size: 25px;
+    }
+
+    main .container-about-us .content-button-about{
+        margin-top: 3rem;
+    }
+
+    footer{
+        text-align: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    footer .content-map{
+        width: 425px;
+    }
+    
+    footer .content-map iframe{
+        height: 250px;
+    } 
+}
+
+@media(max-width: 425px){
+    header{
+        height: 0px;
+    }
+
+    header div #btn-open-nav-mobile{
+        display: block;
+    }
+    
+    header nav ul li a{
+        font-size: 13px;
+    }
+
+    main .container-slider-types-cakes img{
+        width: 100%;
+        height: 50vh;
+        filter: brightness(50%);
+    }
+
+    main .container-slider-types-cakes .title-banner{
+        font-size: 35px;
+        color: #f1f1f1;
+    }
+    
+    main .container-slider-types-cakes .btn-banner{
+        font-size: 15px;
+    }
+
+    footer .content-map{
+        width: 310px;
+    }
+    
+    footer .content-map iframe{
+        height: 250px;
+    } 
+}
+
+/* CLASS LIST */
+.open-modal{
+    height: 250px;
+    transition: all ease 0.3s;
+}
