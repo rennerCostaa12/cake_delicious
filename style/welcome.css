@@ -5,12 +5,24 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.swiper-button-prev{
+    color: #bb1541 !important;
+}
+
+.swiper-button-next{
+    color: #bb1541 !important;
+}
+
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem;
     background-color: #D8557B;
+}
+
+header .content-logo img{
+    width: 80px;
 }
 
 header nav{
@@ -45,16 +57,21 @@ header nav ul li a{
 }
 
 header nav ul li a:hover{
-    border-bottom: 3px solid rgb(255, 255, 255);
-    padding-bottom: 2rem;
+    border-bottom: 3px solid #ffffff;
+    padding-bottom: 2.9rem;
 }
 
 header div:nth-child(3){
     font-size: 20px;
 }
 
-header div a{
-    margin-left: 1rem;
+header .content-login{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .content-login a{
     text-decoration: none;
     color: #f1f1f1;
     font-weight: bold;
@@ -111,6 +128,7 @@ main .container-products h1{
     text-align: center;
     font-size: 35px;
     margin-top: 2rem;
+    color: #C22852;
 }
 
 main .container-products .content-products{
@@ -127,10 +145,10 @@ main .container-products .content-products .card-product{
     width: 300px;
     border-radius: 2px;
     background-color: #F2E7DA;
-    padding: 1rem;
-    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    padding: 1.5rem 1rem;
+    -webkit-box-shadow: 0px 0px 6px 0px #000000bf;
+    -moz-box-shadow: 0px 0px 6px 0px #000000bf;
+    box-shadow: 0px 0px 6px 0px #000000bf;
 }
 
 main .container-products .content-products .card-product img{
@@ -140,7 +158,7 @@ main .container-products .content-products .card-product img{
 
 main .container-products .content-products .card-product h3{
     font-size: 20px;
-    margin: 1rem 0;
+    margin: 2rem 0;
     color: #c24a6a;
 }
 
@@ -159,6 +177,103 @@ main .container-products .content-products .card-product button:hover{
     background-color: #8d0328;
 }
 
+main .container-products .content-products .card-product a{
+    font-size: 16px;
+    background-color: #bb1541;
+    color: #f1f1f1;
+    border-radius: 6px;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    text-decoration: none;
+}
+
+main .container-products .content-products .card-product a:hover{
+    background-color: #8d0328;
+}
+
+main .container-products .content-texts-feedbacks{
+    height: 300px;
+    margin: 2rem 3rem;
+    padding: 0.7rem;
+    overflow-y: scroll;
+    border: 1px solid #4b4b4b91
+}
+
+main .container-products .content-texts-feedbacks > div{
+    margin: 1rem 0;
+}
+
+main .container-products .content-texts-feedbacks > div span{
+    display: block;
+    margin: 0.5rem 0;
+}
+
+main .container-products .content-texts-feedbacks > div span:nth-child(1){
+    width: 100px;
+    background-color: #ffff00;
+    padding: 0.8rem;
+    font-weight: bold;
+}
+
+main .container-products .content-texts-feedbacks > div span:nth-child(2){
+    font-size: 20px;
+    font-weight: bold;
+}
+
+main .container-products .content-texts-feedbacks > div p{
+    font-weight: 300;
+    font-style: italic;
+    color: #6a6a6a;
+    line-height: 30px;
+}
+
+
+main .container-products .content-feedback{
+    margin: 2rem 0;
+    margin: 0 3rem;
+}
+
+
+main .container-products .content-feedback form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+main .container-products .content-feedback label{
+    font-size: 20px;
+}
+
+main .container-products .content-feedback textarea{
+    padding: 0.8rem;
+    font-size: 17px;
+}
+
+main .container-products .content-feedback form > div select{
+    padding: 0.5rem;
+}
+
+main .container-products .content-feedback form > .content-button-feedback{
+    text-align: center;
+}
+
+main .container-products .content-feedback form > .content-button-feedback button{
+    font-size: 16px;
+    background-color: #bb1541;
+    color: #f1f1f1;
+    border-radius: 6px;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+main .container-products .content-feedback form > .content-button-feedback button:hover{
+    background-color: #8d0328;
+}
+
 main .container-about-us{
     margin: 4rem 0;
 }
@@ -168,6 +283,7 @@ main .container-about-us > h1{
     font-size: 35px;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    color: #C22852;
 }
 
 main .container-about-us .content-about-us{
@@ -229,6 +345,11 @@ footer .content-map iframe{
     height: 300px;
 }
 
+footer .content-logo-footer img{
+    width: 200px;
+}
+
+
 @media(max-width: 850px){
     header{
         flex-direction: column;
@@ -272,7 +393,7 @@ footer .content-map iframe{
 
 @media(max-width: 425px){
     header{
-        height: 0px;
+        height: 100px;
     }
 
     header div #btn-open-nav-mobile{
@@ -281,6 +402,10 @@ footer .content-map iframe{
     
     header nav ul li a{
         font-size: 13px;
+    }
+
+    header div a:nth-child(1){
+        margin-left: 1rem;
     }
 
     main .container-slider-types-cakes img{
@@ -297,6 +422,29 @@ footer .content-map iframe{
     main .container-slider-types-cakes .btn-banner{
         font-size: 15px;
     }
+
+    main .container-products > h1{
+        font-size: 30px;
+    }
+
+    main .container-about-us > h1{
+        font-size: 30px !important;
+    }
+
+    main .container-about-us .content-about-us .content-description-about p{
+        font-size: 20px;
+    }
+
+    main .container-about-us .content-about-us .content-img-integrant img{
+        width: 300px;
+    }
+
+    main .container-about-us > h1{
+    text-align: center;
+    font-size: 35px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
     footer .content-map{
         width: 310px;

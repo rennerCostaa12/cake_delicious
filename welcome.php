@@ -27,16 +27,17 @@ $lnameUser = $_SESSION['last_name'];
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png">
 
     <script src="https://kit.fontawesome.com/97878bd3c0.js" crossorigin="anonymous"></script>
 
-    <title>Confeitaria</title>
+    <title>Cake Delicious</title>
 </head>
 
 <body>
     <header id="home">
-        <div>
-            <img src="" alt="logo">
+        <div class="content-logo">
+            <img src="./assets/logo.png" alt="logo">
             <button id="btn-open-nav-mobile">
                 <i class="fas fa-sort-down"></i>
             </button>
@@ -58,12 +59,12 @@ $lnameUser = $_SESSION['last_name'];
             </ul>
         </nav>
         <?php if ($isLogged) : ?>
-            <div>
+            <div class="content-login">
                 <span><?php echo "$fnameUser $lnameUser" ?></span>
                 <a href="logout.php">Sair da conta</a>
             </div>
         <?php else : ?>
-            <div>
+            <div class="content-login">
                 <a href="cadastro_usuario.php">Cadastre-se</a>
                 <a href="login.php">Login</a>
             </div>
@@ -76,31 +77,15 @@ $lnameUser = $_SESSION['last_name'];
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="./assets/bolo_casamento.jpg" alt="">
-                        <div class="content-banner">
-                            <h2 class="title-banner">Bolos de casamento</h2>
-                            <button class="btn-banner">Ver produto</button>
-                        </div>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/bolo_aniversario.webp" alt="">
-                        <div class="content-banner">
-                            <h2 class="title-banner">Bolos de aniversário</h2>
-                            <button class="btn-banner">Ver produto</button>
-                        </div>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/bolo_cha.jpg" alt="">
-                        <div class="content-banner">
-                            <h2 class="title-banner">Bolos de chá</h2>
-                            <button class="btn-banner">Ver produto</button>
-                        </div>
                     </div>
                     <div class="swiper-slide">
                         <img src="./assets/bolo_diversos.webp" alt="">
-                        <div class="content-banner">
-                            <h2 class="title-banner">Bolos diversos</h2>
-                            <button class="btn-banner">Ver produto</button>
-                        </div>
                     </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -113,29 +98,85 @@ $lnameUser = $_SESSION['last_name'];
 
             <div class="content-products">
                 <div class="card-product">
-                    <img src="./assets/bolo_produto1.webp" alt="image-product-1">
-                    <h3>Nome do produto</h3>
-                    <button>Ver Produto</button>
+                    <img src="./assets/bolo_casamento_produto.jpg" alt="bolo de casamento">
+                    <h3>Bolos de casamento</h3>
+                    <a href="bolo_casamento.php">Fazer pedido</a>
                 </div>
 
                 <div class="card-product">
-                    <img src="./assets/bolo_produto2.jpg" alt="image-product-2">
-                    <h3>Nome do produto</h3>
-                    <button>Ver Produto</button>
+                    <img src="./assets/bolo_aniversario_produto.webp" alt="bolo de aniversário">
+                    <h3>Bolos de aniversários</h3>
+                    <a href="bolo_aniversario.php">Fazer pedido</a>
                 </div>
 
                 <div class="card-product">
-                    <img src="./assets/bolo_produto3.jpg" alt="image-product-3">
-                    <h3>Nome do produto</h3>
-                    <button>Ver Produto</button>
+                    <img src="./assets/bolo_cha_produto.jpg" alt="bolo de chá">
+                    <h3>Bolos de chá</h3>
+                    <a href="#">Fazer pedido</a>
                 </div>
 
                 <div class="card-product">
-                    <img src="./assets/bolo_produto4.webp" alt="image-product-4">
-                    <h3>Nome do produto</h3>
-                    <button>Ver Produto</button>
+                    <img src="./assets/bolo_diversos_produto.png" alt="bolo diversos">
+                    <h3>Bolos diversos</h3>
+                    <a href="#">Fazer pedido</a>
                 </div>
             </div>
+
+            <?php if ($isLogged) : ?>
+                <div class="content-texts-feedbacks">
+                    <div>
+                        <span>5 estrelas</span>
+                        <span>username</span>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptate
+                            voluptas totam repellat qui, eum quaerat voluptatibus reiciendis ad quibusdam
+                            doloribus vitae unde provident veritatis perferendis placeat, recusandae
+                            debitis nisi?
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>5 estrelas</span>
+                        <span>username</span>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptate
+                            voluptas totam repellat qui, eum quaerat voluptatibus reiciendis ad quibusdam
+                            doloribus vitae unde provident veritatis perferendis placeat, recusandae
+                            debitis nisi?
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>5 estrelas</span>
+                        <span>username</span>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptate
+                            voluptas totam repellat qui, eum quaerat voluptatibus reiciendis ad quibusdam
+                            doloribus vitae unde provident veritatis perferendis placeat, recusandae
+                            debitis nisi?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-feedback">
+                    <form action="">
+                        <div>
+                            <select name="nota-feedback" id="nota-feedback">
+                                <option value="5">5 estrelas</option>
+                                <option value="4">4 estrelas</option>
+                                <option value="3">3 estrelas</option>
+                                <option value="2">2 estrelas</option>
+                                <option value="1">1 estrelas</option>
+                            </select>
+                        </div>
+                        <label for="feedback">Digite seu feedback</label>
+                        <textarea name="feedback" id="feedback" cols="30" rows="5"></textarea>
+                        <div class="content-button-feedback">
+                            <button>Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            <?php endif; ?>
         </section>
 
         <section id="quem-somos" class="container-about-us">
@@ -162,7 +203,7 @@ $lnameUser = $_SESSION['last_name'];
 
     <footer id="contatos">
         <div class="content-logo-footer">
-            <h1>LOGO</h1>
+            <img src="./assets/logo.png" alt="logo">
         </div>
 
         <div class="content-map">
@@ -173,6 +214,7 @@ $lnameUser = $_SESSION['last_name'];
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./js/welcome.js"></script>
+    <script src="./js/default.js"></script>
 </body>
 
 </html>
