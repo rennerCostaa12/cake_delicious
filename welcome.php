@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $isLogged = false;
@@ -65,8 +64,8 @@ $lnameUser = $_SESSION['last_name'];
             </div>
         <?php else : ?>
             <div class="content-login">
-                <a href="cadastro_usuario.php">Cadastre-se</a>
-                <a href="login.php">Login</a>
+                <a href="./cadastro_usuario.php">Cadastre-se</a>
+                <a href="./login.php">Login</a>
             </div>
         <?php endif; ?>
     </header>
@@ -112,7 +111,7 @@ $lnameUser = $_SESSION['last_name'];
                 <div class="card-product">
                     <img src="./assets/bolo_cha_produto.jpg" alt="bolo de chá">
                     <h3>Bolos de chá</h3>
-                    <a href="#">Fazer pedido</a>
+                    <a href="bolo_cha.php">Fazer pedido</a>
                 </div>
 
                 <div class="card-product">

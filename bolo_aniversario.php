@@ -32,7 +32,7 @@ $lnameUser = $_SESSION['last_name'];
     <title>Cake Delicious | Pedido - Bolo de Chocolate</title>
 
     <link rel="stylesheet" href="./style/welcome.css">
-    <link rel="stylesheet" href="./style/bolo_aniversario.css">
+    <link rel="stylesheet" href="./style/pagina_bolos.css">
 </head>
 
 <body>

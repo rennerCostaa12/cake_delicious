@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 try {
     $dbhost = 'localhost';
     $dbname = 'trabalho_web';
