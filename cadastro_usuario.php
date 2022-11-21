@@ -17,7 +17,7 @@
 	<?php endif; ?>
 	<div id="main-container">
 		<h1>Cadastre-se</h1>
-		<form id="forma-de-registro" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+		<form id="forma-de-registro" action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
 			<div class="half-box spacing">
 				<label for="primeiro_nome">Nome</label>
 				<input type="text" name="primeiro_nome" id="primeiro_nome" placeholder="Digite o seu nome" autocomplete="off" required>

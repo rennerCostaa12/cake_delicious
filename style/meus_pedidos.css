@@ -1,0 +1,38 @@
+.title-page{
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 38px;
+}
+
+.content-table{
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    overflow-x: scroll;
+}
+
+.content-table table{
+    border-spacing: 0px;
+}
+
+.content-table table thead th{
+    border-right: 2px solid #000;
+    padding: 1rem;
+    background-color: #D8557B;
+    color: #f1f1f1; 
+}
+
+.content-table table thead th:nth-child(1){
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    padding: 1rem;
+    background-color: #D8557B;
+    color: #f1f1f1; 
+}
+
+.content-table table tbody td{
+    padding: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}

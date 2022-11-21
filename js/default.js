@@ -1,18 +1,11 @@
 const buttonOpenModal = document.getElementById('btn-open-nav-mobile');
-const headerMobile = document.querySelector('header');
-
-let isModalOpen = false;
+const contentModalMobile = document.querySelector('.modal');
+const buttonCloseModal = document.querySelector('.content-btn-close-modal');
 
 buttonOpenModal.addEventListener('click', () => {
-    const elementHeader = headerMobile.classList;
-    if(isModalOpen){
-        elementHeader.remove('open-modal');
-        isModalOpen = false;
-        buttonOpenModal.innerHTML = '<i class="fas fa-sort-down"></i>';
+    contentModalMobile.style.display = 'block';
+})
 
-    }else{
-        elementHeader.add('open-modal');
-        isModalOpen = true;      
-        buttonOpenModal.innerHTML = '<i class="fas fa-sort-up"></i>';  
-    }
+buttonCloseModal.addEventListener('click', () => {
+    contentModalMobile.style.display = 'none';
 })

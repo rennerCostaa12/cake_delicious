@@ -288,27 +288,52 @@ main .container-about-us > h1{
 
 main .container-about-us .content-about-us{
     width: 100%;
-    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column-reverse;
     gap: 20px;
     padding: 0 2rem;
+    border: 4px solid #0000;
+    text-align: center;
 }
 
 main .container-about-us .content-about-us .content-description-about{
     width: 750px;
 }
 
-main .container-about-us .content-about-us .content-description-about p{
-    font-size: 29px;
-    color: #4b4b4b;
+main .container-about-us .content-about-us .content-description-about span{
+    width: 100%;
+    display: block;
+    text-align: center;
 }
 
-main .container-about-us .content-about-us .content-img-integrant img{
-    width: 400px;
-    border-radius: 5px;
+main .container-about-us .content-about-us .content-description-about span:nth-child(1){
+    font-size: 25px;
+    margin: 0.5rem;
 }
+
+main .container-about-us .content-about-us .content-description-about span:nth-child(2){
+    font-size: 16px;
+    margin: 0.5rem;
+}
+
+
+main .container-about-us .content-about-us .content-img-integrant img{
+    width: 350px;
+    height: 350px;
+    border-radius: 8px;
+    border: 2px solid #000;
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+main .container-about-us .content-about-us .content-img-integrant img:hover{
+    transform: scale(1);
+    border: 2px solid #C22852;
+    transition: all ease 0.3s;
+}
+
 
 main .container-about-us .content-button-about{
     width: 100%;
@@ -349,8 +374,78 @@ footer .content-logo-footer img{
     width: 200px;
 }
 
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 555;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    text-align: center;
+  }
 
-@media(max-width: 850px){
+  .modal-content ul {
+    list-style: none;
+    font-size: 16px;
+  }
+
+  .modal-content ul li{
+    margin: 0.5rem 0;
+  }
+
+  .modal-content ul li a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .modal-content .content-login-mobile a{
+    text-decoration: none;
+    color: #f1f1f1;
+    font-weight: bold;
+    background-color: #C22852;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: all ease 0.3s;
+  }
+
+  .modal-content .content-login-mobile{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .modal-content .content-login-mobile span{
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .modal-content .content-btn-close-modal{
+    text-align: right;
+  }
+
+  .modal-content .content-btn-close-modal button{
+    font-size: 15px;
+    font-weight: bold;
+    background: none;
+    border: none;
+  }
+
+
+@media(max-width: 920px){
     header{
         flex-direction: column;
         gap: 30px;
@@ -359,7 +454,7 @@ footer .content-logo-footer img{
 
 @media(max-width: 768px){
     main .container-about-us .content-about-us{
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
         height: 350px;
     }
@@ -395,9 +490,13 @@ footer .content-logo-footer img{
     header{
         height: 100px;
     }
-
+    
     header div #btn-open-nav-mobile{
         display: block;
+    }
+
+    header nav{
+        display: none;
     }
     
     header nav ul li a{
@@ -406,6 +505,10 @@ footer .content-logo-footer img{
 
     header div a:nth-child(1){
         margin-left: 1rem;
+    }
+
+    header .content-login{
+        display: none !important;
     }
 
     main .container-slider-types-cakes img{
@@ -430,9 +533,15 @@ footer .content-logo-footer img{
     main .container-about-us > h1{
         font-size: 30px !important;
     }
-
-    main .container-about-us .content-about-us .content-description-about p{
+    
+    main .container-about-us .content-about-us .content-description-about span:nth-child(1){
         font-size: 20px;
+        margin: 0.5rem;
+    }
+    
+    main .container-about-us .content-about-us .content-description-about span:nth-child(2){
+        font-size: 14px;
+        margin: 0.5rem;
     }
 
     main .container-about-us .content-about-us .content-img-integrant img{
@@ -444,7 +553,7 @@ footer .content-logo-footer img{
     font-size: 35px;
     margin-top: 2rem;
     margin-bottom: 2rem;
-}
+    }
 
     footer .content-map{
         width: 310px;
@@ -453,10 +562,4 @@ footer .content-logo-footer img{
     footer .content-map iframe{
         height: 250px;
     } 
-}
-
-/* CLASS LIST */
-.open-modal{
-    height: 250px;
-    transition: all ease 0.3s;
 }

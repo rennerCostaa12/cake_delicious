@@ -9,45 +9,69 @@ const swiper = new Swiper(".mySwiper", {
     },
 });
 
-const listsTexts = [
-    'Sábio é aquele que conhece os limites da própria ignorância',
-    'É necessário que ao menos uma vez na vida você duvide, tanto quanto possível, de todas as coisas.',
-    'O mundo é um lugar perigoso de se viver, não por causa daqueles que fazem o mal, mas sim por causa que observam e deixam o mal acontecer.',
-    'Não me roube a solidão sem antes me oferecer a verdadeira companhia.'
-];
-
-const listImages = [
-    'https://mundodosfilosofos.com.br/wp-content/uploads/2021/07/Socrates1.jpg',
-    'https://conhecimentocientifico.com/wp-content/uploads/2019/08/rene-descartes.jpg',
-    'https://static.todamateria.com.br/upload/al/be/alberteinstein-cke.jpg',
-    'https://cdn.pensador.com/img/imagens/fr/ie/friedrich_nietzsche_2.jpg'
+const colaborators = [
+    {
+        name: 'Alexandre Bacelar',
+        imageUrl: './assets/alexandre_bacelar.jpeg',
+        course: 'Análise e Desenvolvimento de Sistemas'
+    },
+    {
+        name: 'Wemeson Alves',
+        imageUrl: './assets/wemerson_alves.jpeg',
+        course: 'Análise e Desenvolvimento de Sistemas',
+    },
+    {
+        name: 'Israel Araujo',
+        imageUrl: './assets/israel_araujo.jpeg',
+        course: 'Análise e Desenvolvimento de Sistemas',
+    },
+    {
+        name: 'Renner Costa',
+        imageUrl: './assets/renner_costa.jpeg',
+        course: 'Análise e Desenvolvimento de Sistemas',
+    },
+    {
+        name: 'Nixon',
+        imageUrl: 'https://www.shutterstock.com/image-vector/pictogram-head-question-mark-john-260nw-171638717.jpg',
+        course: '???',
+    }
 ]
 
-const contentDescriptionIntegrant = document.querySelector('.description-integrant');
-const contentImageIntegrant = document.querySelector('.image-itegrant');
+const colaboratorsTransform = JSON.stringify(colaborators);
+const colaboratorsJSON = JSON.parse(colaboratorsTransform);
+
+const contentNameColaborator = document.querySelector('.name-colaborator');
+const contentCourseColaborator = document.querySelector('.course-colaborator');
+const contentImageColaborator = document.querySelector('.image-colaborator');
 
 const buttonsAboutUs = document.querySelectorAll('.button-slider-about');
 
 let indexIntegrant = 0;
 
-contentDescriptionIntegrant.innerHTML = listsTexts[indexIntegrant]
-contentImageIntegrant.src = listImages[indexIntegrant];
+contentNameColaborator.innerHTML = colaboratorsJSON[0].name;
+contentCourseColaborator.innerHTML = colaboratorsJSON[0].course;
+contentImageColaborator.src = colaboratorsJSON[0].imageUrl;
 
+
+//FUNCTION PREV SLIDER SECTION ABOUT
 buttonsAboutUs[0].addEventListener('click', () => {
 
     indexIntegrant = indexIntegrant - 1;
     if (indexIntegrant < 0) {
-        indexIntegrant = listsTexts.length - 1;
+        indexIntegrant = colaboratorsJSON.length - 1;
     }
-    contentDescriptionIntegrant.innerHTML = listsTexts[indexIntegrant]
-    contentImageIntegrant.src = listImages[indexIntegrant];
+    contentNameColaborator.innerHTML = colaboratorsJSON[indexIntegrant].name;
+    contentCourseColaborator.innerHTML = colaboratorsJSON[indexIntegrant].course;
+    contentImageColaborator.src = colaboratorsJSON[indexIntegrant].imageUrl;
 });
 
+//FUNCTION NEXT SLIDER SECTION ABOUT
 buttonsAboutUs[1].addEventListener('click', () => {
     indexIntegrant = indexIntegrant + 1;
-    if (indexIntegrant >= listsTexts.length) {
+    if (indexIntegrant >= colaboratorsJSON.length) {
         indexIntegrant = 0;
     }
-    contentDescriptionIntegrant.innerHTML = listsTexts[indexIntegrant]
-    contentImageIntegrant.src = listImages[indexIntegrant];
+    contentNameColaborator.innerHTML = colaboratorsJSON[indexIntegrant].name;
+    contentCourseColaborator.innerHTML = colaboratorsJSON[indexIntegrant].course;
+    contentImageColaborator.src = colaboratorsJSON[indexIntegrant].imageUrl;
 });

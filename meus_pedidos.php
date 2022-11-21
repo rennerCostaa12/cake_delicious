@@ -1,5 +1,5 @@
 <?php
-include 'controllers/bolo_cha_controller.php';
+include 'controllers/meus_pedidos_controller.php';
 
 session_start();
 
@@ -31,10 +31,10 @@ $lnameUser = $_SESSION['last_name'];
     <link rel="icon" type="image/x-icon" href="./assets/logo.png">
 
     <script src="https://kit.fontawesome.com/97878bd3c0.js" crossorigin="anonymous"></script>
-    <title>Cake Delicious | Pedido - Bolo de Chá</title>
+    <title>Cake Delicious | Meus Pedidos</title>
 
     <link rel="stylesheet" href="./style/welcome.css">
-    <link rel="stylesheet" href="./style/pagina_bolos.css">
+    <link rel="stylesheet" href="./style/meus_pedidos.css">
 </head>
 
 <body>
@@ -75,81 +75,39 @@ $lnameUser = $_SESSION['last_name'];
         <?php endif; ?>
     </header>
 
-    <div class="card">
-        <img class="card_img" src="./assets/bolo_cha_banner.jpg" alt="Bolo de casamento">
-        <h2 class="card_titulo">O Bolo perfeito para o seu chá</h2>
+    <div>
+        <h1 class="title-page">Meus Pedidos</h1>
 
-        <span class="card_descricao">
-            Confira abaixo algumas opções para montar o bolo ideal para o seu casamento.
-        </span>
-        <br>
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="card_form">
-            <h3 class="card_form_titulo">Escolha seu bolo</h3>
-
-            <div class="card_form_div">
-                <label for="qnt_andares">Quantidade de andares</label><br>
-                <select name="qnt_andares" id="qnt_andares">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-
-            </div>
-            <div class="card_form_div">
-                <label>Tipo de massa:</label><br>
-                <select name="tipo_massa" id="massa">
-                    <option value="" selected disabled>Selecione</option>
-                    <option value="Amanteigada">Amanteigada</option>
-                    <option value="Pão de ló">Pão de ló</option>
-                    <option value="Red Velvet">Red Velvet</option>
-                    <option value="Mocaccino">Mocaccino</option>
-                </select>
-            </div>
-            <div class="card_form_div">
-                <label>Recheio:</label><br>
-                <select name="recheio" id="recheio">
-                    <option value="" selected disabled>Selecione</option>
-                    <option value="Chocolate">Chocolate</option>
-                    <option value="Beijinho">Beijinho</option>
-                    <option value="Nutela">Nutela</option>
-                    <option value="4Leites">4Leites</option>
-                    <option value="Ninho">Ninho</option>
-                    <option value="Doce de leite">Doce de leite</option>
-                </select>
-            </div>
-            <label for="check_cobertura">Deseja inserir cobertura?</label>
-            <input id="check_cobertura" name="check_cobertura" type="checkbox">
-            <div id="content-cobertura" class="card_form_div">
-                <label>Cobertura:</label><br>
-                <select name="cobertura" id="cobertura">
-                    <option value="" selected disabled>Selecione</option>
-                    <option value="Chantilly">Chantilly</option>
-                    <option value="Pasta de leite ninho">Pasta de leite ninho</option>
-                    <option value="Pasta americana">Pasta americana</option>
-                    <option value="Ninho">Ninho</option>
-                </select>
-            </div>
-            <div class="card_form_div">
-                <label>Alguma observação?</label><br>
-                <textarea rows="2" id="observacao" name="observacao"></textarea>
-            </div>
-            <div class="card_form_div">
-                <label>Data de entrega: </label><br>
-                <input name="receipt_date" type="datetime-local">
-            </div>
-
-            <div class="card_form_div">
-                <label>Frete:</label><br>
-                <select name="frete">
-                    <option value="" selected disabled>Selecione</option>
-                    <option value="buscar">Ir buscar</option>
-                    <option value="frete">Frete</option>
-                </select>
-            </div>
-
-            <button class="card_form_button" type="submit">Enviar pedido</button>
-        </form>
+        <div class="content-table">
+            <table>
+                <thead>
+                    <th>Categoria</th>
+                    <th>Andares</th>
+                    <th>Tipo de massa</th>
+                    <th>Data de entrega</th>
+                    <th>Recheio</th>
+                    <th>Cobertura</th>
+                    <th>Observação</th>
+                    <th>Preço</th>
+                    <th>É frete?</th>
+                </thead>
+                <tbody>
+                    <?php foreach ($pdo->query($getAllMyRequests) as $data) : ?>
+                        <tr>
+                            <td><?php echo $data['name_category'] ?></td>
+                            <td><?php echo $data['size_cake'] ?></td>
+                            <td><?php echo $data['type_pasta'] ?></td>
+                            <td><?php echo $data['receipt_date'] ?></td>
+                            <td><?php echo $data['filling'] ?></td>
+                            <td><?php echo $data['roof'] ? $data['roof'] : "Sem cobertura" ?></td>
+                            <td><?php echo $data['note'] ?></td>
+                            <td id="money_cake"><?php echo $data['price'] ?></td>
+                            <td><?php echo $data['isshipping'] ? "Sim" : "Não" ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <footer id="contatos">
@@ -162,9 +120,6 @@ $lnameUser = $_SESSION['last_name'];
         </div>
     </footer>
 
-    <?php
-    echo "<h1>$errorMessage</h1>";
-    ?>
     <div class="modal">
         <div class="modal-content">
             <div class="content-btn-close-modal">
@@ -209,7 +164,7 @@ $lnameUser = $_SESSION['last_name'];
     </div>
 
     <script src="./js/default.js"></script>
-    <script src="./js/pagina_bolo.js"></script>
+    <script src="./js/meus_pedidos.js"></script>
 </body>
 
 </html>

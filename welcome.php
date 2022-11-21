@@ -1,4 +1,6 @@
 <?php
+include 'controllers/welcome_controller.php';
+
 session_start();
 
 $isLogged = false;
@@ -60,6 +62,7 @@ $lnameUser = $_SESSION['last_name'];
         <?php if ($isLogged) : ?>
             <div class="content-login">
                 <span><?php echo "$fnameUser $lnameUser" ?></span>
+                <a href="meus_pedidos.php">Meus Pedidos</a>
                 <a href="logout.php">Sair da conta</a>
             </div>
         <?php else : ?>
@@ -99,66 +102,60 @@ $lnameUser = $_SESSION['last_name'];
                 <div class="card-product">
                     <img src="./assets/bolo_casamento_produto.jpg" alt="bolo de casamento">
                     <h3>Bolos de casamento</h3>
-                    <a href="bolo_casamento.php">Fazer pedido</a>
+                    <?php if ($isLogged) : ?>
+                        <a href="bolo_casamento.php">Fazer pedido</a>
+                    <?php else : ?>
+                        <a href="login.php">Fazer pedido</a>
+                    <?php endif; ?>
                 </div>
 
                 <div class="card-product">
                     <img src="./assets/bolo_aniversario_produto.webp" alt="bolo de aniversário">
                     <h3>Bolos de aniversários</h3>
-                    <a href="bolo_aniversario.php">Fazer pedido</a>
+                    <?php if ($isLogged) : ?>
+                        <a href="bolo_aniversario.php">Fazer pedido</a>
+                    <?php else : ?>
+                        <a href="login.php">Fazer pedido</a>
+                    <?php endif; ?>
                 </div>
 
                 <div class="card-product">
                     <img src="./assets/bolo_cha_produto.jpg" alt="bolo de chá">
                     <h3>Bolos de chá</h3>
-                    <a href="bolo_cha.php">Fazer pedido</a>
+                    <?php if ($isLogged) : ?>
+                        <a href="bolo_cha.php">Fazer pedido</a>
+                    <?php else : ?>
+                        <a href="login.php">Fazer pedido</a>
+                    <?php endif; ?>
                 </div>
 
                 <div class="card-product">
                     <img src="./assets/bolo_diversos_produto.png" alt="bolo diversos">
                     <h3>Bolos diversos</h3>
-                    <a href="#">Fazer pedido</a>
+                    <?php if ($isLogged) : ?>
+                        <a href="login.php">Fazer pedido</a>
+                    <?php else : ?>
+                        <a href="#">Fazer pedido</a>
+                    <?php endif; ?>
                 </div>
+            </div>
             </div>
 
             <?php if ($isLogged) : ?>
                 <div class="content-texts-feedbacks">
-                    <div>
-                        <span>5 estrelas</span>
-                        <span>username</span>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptate
-                            voluptas totam repellat qui, eum quaerat voluptatibus reiciendis ad quibusdam
-                            doloribus vitae unde provident veritatis perferendis placeat, recusandae
-                            debitis nisi?
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>5 estrelas</span>
-                        <span>username</span>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptate
-                            voluptas totam repellat qui, eum quaerat voluptatibus reiciendis ad quibusdam
-                            doloribus vitae unde provident veritatis perferendis placeat, recusandae
-                            debitis nisi?
-                        </p>
-                    </div>
-
-                    <div>
-                        <span>5 estrelas</span>
-                        <span>username</span>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia voluptate
-                            voluptas totam repellat qui, eum quaerat voluptatibus reiciendis ad quibusdam
-                            doloribus vitae unde provident veritatis perferendis placeat, recusandae
-                            debitis nisi?
-                        </p>
-                    </div>
+                    <?php foreach ($pdo->query($getAllAssesstments) as $data) : ?>
+                        <div>
+                            <span><?php echo $data['avaliation'] . " Estrelas" ?></span>
+                            <span><?php echo $data['first_name'] . " " . $data['last_name']; ?></span>
+                            <p>
+                                <?php echo $data['comment'] ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
 
                 <div class="content-feedback">
-                    <form action="">
+                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                         <div>
                             <select name="nota-feedback" id="nota-feedback">
                                 <option value="5">5 estrelas</option>
@@ -171,7 +168,7 @@ $lnameUser = $_SESSION['last_name'];
                         <label for="feedback">Digite seu feedback</label>
                         <textarea name="feedback" id="feedback" cols="30" rows="5"></textarea>
                         <div class="content-button-feedback">
-                            <button>Enviar</button>
+                            <button type="submit">Enviar</button>
                         </div>
                     </form>
                 </div>
@@ -182,11 +179,12 @@ $lnameUser = $_SESSION['last_name'];
             <h1>Sobre nós</h1>
             <div class="content-about-us">
                 <div class="content-description-about">
-                    <p class="description-integrant"></p>
+                    <span class="name-colaborator"></span>
+                    <span class="course-colaborator"></span>
                 </div>
 
                 <div class="content-img-integrant">
-                    <img class="image-itegrant" src="" alt="">
+                    <img class="image-colaborator" src="" alt="">
                 </div>
             </div>
             <div class="content-button-about">
@@ -209,6 +207,49 @@ $lnameUser = $_SESSION['last_name'];
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.1990300256434!2d-38.57710688583541!3d-3.7668214972596052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74c01797285bb%3A0xa8888be05f940563!2sCentro%20Universit%C3%A1rio%20Est%C3%A1cio%20-%20Campus%20Parangaba!5e0!3m2!1spt-BR!2sbr!4v1667871175700!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </footer>
+
+    <div class="modal">
+        <div class="modal-content">
+            <div class="content-btn-close-modal">
+                <button>X</button>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="#home">HOME</a>
+                </li>
+                <li>
+                    <a href="#servicos">SERVIÇOS</a>
+                </li>
+                <li>
+                    <a href="#quem-somos">QUEM SOMOS</a>
+                </li>
+                <li>
+                    <a href="#contatos">CONTATOS</a>
+                </li>
+            </ul>
+            <?php if ($isLogged) : ?>
+                <div class="content-login-mobile">
+                    <span><?php echo "$fnameUser $lnameUser" ?></span>
+                    <div>
+                        <a href="meus_pedidos.php">Meus Pedidos</a>
+                    </div>
+                    <div>
+                        <a href="logout.php">Sair da conta</a>
+                    </div>
+                </div>
+            <?php else : ?>
+                <div class="content-login-mobile">
+                    <div>
+                        <a href="./cadastro_usuario.php">Cadastre-se</a>
+                    </div>
+                    <div>
+                        <a href="./login.php">Login</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>

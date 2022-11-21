@@ -1,10 +1,12 @@
 <?php
+include 'controllers/bolo_aniversario_controller.php';
 
 session_start();
 
 $isLogged = false;
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: welcome.php");
     $isLogged = false;
 } else {
     $isLogged = true;
@@ -62,12 +64,13 @@ $lnameUser = $_SESSION['last_name'];
         <?php if ($isLogged) : ?>
             <div class="content-login">
                 <span><?php echo "$fnameUser $lnameUser" ?></span>
+                <a href="meus_pedidos.php">Meus Pedidos</a>
                 <a href="logout.php">Sair da conta</a>
             </div>
         <?php else : ?>
             <div class="content-login">
-                <a href="cadastro_usuario.php">Cadastre-se</a>
-                <a href="login.php">Login</a>
+                <a href="./cadastro_usuario.php">Cadastre-se</a>
+                <a href="./login.php">Login</a>
             </div>
         <?php endif; ?>
     </header>
@@ -76,10 +79,14 @@ $lnameUser = $_SESSION['last_name'];
         <img class="card_img" src="./assets/bolo_de_chocolate_banner.jpg" alt="Bolo de casamento">
         <h2 class="card_titulo">O bolo de aniversário perfeito para você!</h2>
         <span class="card_descricao">
-        Nossos bolos de aniversário são perfeitos para o seu evento. Extremamente saborosos e macios.
+            Nossos bolos de aniversário são perfeitos para o seu evento. Extremamente saborosos e macios.
         </span>
         <br>
-        <form class="card_form">
+        
+        <?php 
+            echo "<h1>$errorMessage</h1>";
+        ?>
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="card_form">
             <h3 class="card_form_titulo">Escolha seu bolo</h3>
 
             <div class="card_form_div">
@@ -94,7 +101,7 @@ $lnameUser = $_SESSION['last_name'];
             </div>
             <div class="card_form_div">
                 <label>Tipo de massa:</label><br>
-                <select id="massa">
+                <select name="tipo_massa" id="massa">
                     <option value="" selected disabled>Selecione</option>
                     <option value="Amanteigada">Amanteigada</option>
                     <option value="Pão de ló">Pão de ló</option>
@@ -114,7 +121,9 @@ $lnameUser = $_SESSION['last_name'];
                     <option value="Doce de leite">Doce de leite</option>
                 </select>
             </div>
-            <div class="card_form_div">
+            <label for="check_cobertura">Deseja inserir cobertura?</label>
+            <input id="check_cobertura" name="check_cobertura" type="checkbox">
+            <div id="content-cobertura" class="card_form_div">
                 <label>Cobertura:</label><br>
                 <select name="cobertura" id="cobertura">
                     <option value="" selected disabled>Selecione</option>
@@ -128,6 +137,21 @@ $lnameUser = $_SESSION['last_name'];
                 <label>Alguma observação?</label><br>
                 <textarea rows="2" id="observacao" name="observacao"></textarea>
             </div>
+
+            <div class="card_form_div">
+                <label>Data de entrega: </label><br>
+                <input name="receipt_date" type="datetime-local">
+            </div>
+
+            <div class="card_form_div">
+                <label>Frete:</label><br>
+                <select name="frete">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="buscar">Ir buscar</option>
+                    <option value="frete">Frete</option>
+                </select>
+            </div>
+
             <button class="card_form_button" type="submit">Enviar pedido</button>
         </form>
     </div>
@@ -142,7 +166,51 @@ $lnameUser = $_SESSION['last_name'];
         </div>
     </footer>
 
-    <script src="./js/default.js"></script>
+    <div class="modal">
+        <div class="modal-content">
+            <div class="content-btn-close-modal">
+                <button>X</button>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="#home">HOME</a>
+                </li>
+                <li>
+                    <a href="#servicos">SERVIÇOS</a>
+                </li>
+                <li>
+                    <a href="#quem-somos">QUEM SOMOS</a>
+                </li>
+                <li>
+                    <a href="#contatos">CONTATOS</a>
+                </li>
+            </ul>
+            <?php if ($isLogged) : ?>
+                <div class="content-login-mobile">
+                    <span><?php echo "$fnameUser $lnameUser" ?></span>
+                    <div>
+                        <a href="meus_pedidos.php">Meus Pedidos</a>
+                    </div>
+                    <div>
+                        <a href="logout.php">Sair da conta</a>
+                    </div>
+                </div>
+            <?php else : ?>
+                <div class="content-login-mobile">
+                    <div>
+                        <a href="./cadastro_usuario.php">Cadastre-se</a>
+                    </div>
+                    <div>
+                        <a href="./login.php">Login</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <script src="./js/default.js"></script>,
+    <script src="./js/pagina_bolo.js"></script>
 </body>
 
 </html>
