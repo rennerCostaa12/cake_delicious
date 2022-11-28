@@ -1,10 +1,10 @@
 <?php
 
 try {
-    $dbhost = '';
-    $dbname = '';
-    $dbuser = '';
-    $dbpass = '';
+    $dbhost = 'localhost';
+    $dbname = 'trabalho_web';
+    $dbuser = 'postgres';
+    $dbpass = 'renner1207';
 
     $pdo = new PDO("pgsql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 

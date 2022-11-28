@@ -21,13 +21,43 @@ header{
     background-color: #D8557B;
 }
 
-header .content-logo img{
+header nav img{
     width: 80px;
 }
 
-header nav{
+.navbar.bg-light.fixed-top{
     display: flex;
-    gap: 40px;
+    background-color: #D8557B !important;
+    color: #f1f1f1 !important;
+}
+
+.offcanvas.offcanvas-end.show{
+    background-color: #D8557B !important;
+    color: #f1f1f1 !important;
+}
+
+.content-desktop-nav{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.content-desktop-nav{
+    margin: 0 !important;
+}
+
+.content-desktop-nav li{
+    font-weight: bold;
+    transform: scale(0.9);
+}
+
+.content-desktop-nav li:hover{
+    transition: all ease 0.3s;
+    transform: scale(1);
+}
+
+.navbar-toggler{
+    display: none;
 }
 
 header div #btn-open-nav-mobile{
@@ -43,27 +73,6 @@ header div #btn-open-nav-mobile{
     font-size: 20px;
 }
 
-header nav ul{
-    display: flex;
-    list-style: none;
-    align-items: center;
-    gap: 20px;
-}
-
-header nav ul li a{
-    text-decoration: none;
-    color: #f1f1f1;
-    transition: all ease 0.3s;
-}
-
-header nav ul li a:hover{
-    border-bottom: 3px solid #ffffff;
-    padding-bottom: 2.9rem;
-}
-
-header div:nth-child(3){
-    font-size: 20px;
-}
 
 header .content-login{
     display: flex;
@@ -81,13 +90,45 @@ header .content-login a{
     transition: all ease 0.3s;
 }
 
-header div a:hover{
-    background-color: #bb1541;
+header div a{
+    color: #f1f1f1 !important;
+}
+
+.content-login-and-nav{
+    display: flex;
+    align-items: center !important;
+    gap: 30px;
+}
+
+.content-login-and-nav ul{
+    margin: 0;
+    list-style: none !important;
+}
+
+.dropdown-menu{
+    background-color: #C22852 !important;
+}
+
+.dropdown-menu a:hover{
+    background-color: #d44b70 !important;
+}
+
+.content-logout a{
+    border: none;
+    background-color: #C22852 !important;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.content-logout a:hover{
+    transition: all ease 0.3s;
+    background-color: #a10831 !important;
 }
 
 main .container-slider-types-cakes{
     width: 100%;
-
+    margin-top: 4rem;
 }
 
 main .container-slider-types-cakes img{
@@ -124,7 +165,7 @@ main .container-slider-types-cakes .btn-banner:hover{
     background-color: #8d0328;
 }
 
-main .container-products h1{
+main .container-products > h1{
     text-align: center;
     font-size: 35px;
     margin-top: 2rem;
@@ -193,33 +234,42 @@ main .container-products .content-products .card-product a:hover{
     background-color: #8d0328;
 }
 
+.content-btn-open-avaliations{
+    text-align: center;
+}
+
+.content-btn-open-avaliations button{
+    font-size: 16px;
+    background-color: #bb1541;
+    color: #f1f1f1;
+    border-radius: 6px;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 1rem 0;
+}
+
 main .container-products .content-texts-feedbacks{
+    width: 100%;
     height: 300px;
-    margin: 2rem 3rem;
-    padding: 0.7rem;
     overflow-y: scroll;
-    border: 1px solid #4b4b4b91
+    border: 1px solid #4b4b4b91;
+    padding: 0.5rem;
 }
 
 main .container-products .content-texts-feedbacks > div{
     margin: 1rem 0;
 }
 
-main .container-products .content-texts-feedbacks > div span{
-    display: block;
-    margin: 0.5rem 0;
-}
 
-main .container-products .content-texts-feedbacks > div span:nth-child(1){
-    width: 100px;
-    background-color: #ffff00;
-    padding: 0.8rem;
-    font-weight: bold;
-}
-
-main .container-products .content-texts-feedbacks > div span:nth-child(2){
+main .container-products .content-texts-feedbacks > div h5{
     font-size: 20px;
     font-weight: bold;
+    text-align: left !important;
+}
+
+main .container-products .content-texts-feedbacks > div h5 > span{
+    font-size: 15px;
+    color: #6a6a6a;
 }
 
 main .container-products .content-texts-feedbacks > div p{
@@ -227,6 +277,7 @@ main .container-products .content-texts-feedbacks > div p{
     font-style: italic;
     color: #6a6a6a;
     line-height: 30px;
+    text-align: left;
 }
 
 
@@ -249,6 +300,7 @@ main .container-products .content-feedback label{
 main .container-products .content-feedback textarea{
     padding: 0.8rem;
     font-size: 17px;
+    height: 80px;
 }
 
 main .container-products .content-feedback form > div select{
@@ -291,65 +343,20 @@ main .container-about-us .content-about-us{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column-reverse;
     gap: 20px;
     padding: 0 2rem;
     border: 4px solid #0000;
     text-align: center;
+    flex-wrap: wrap;
 }
 
-main .container-about-us .content-about-us .content-description-about{
-    width: 750px;
-}
-
-main .container-about-us .content-about-us .content-description-about span{
-    width: 100%;
-    display: block;
-    text-align: center;
-}
-
-main .container-about-us .content-about-us .content-description-about span:nth-child(1){
-    font-size: 25px;
-    margin: 0.5rem;
-}
-
-main .container-about-us .content-about-us .content-description-about span:nth-child(2){
-    font-size: 16px;
-    margin: 0.5rem;
-}
-
-
-main .container-about-us .content-about-us .content-img-integrant img{
-    width: 350px;
-    height: 350px;
+.content-about-us .cards img{
+    width: 250px;
+    height: 250px;
     border-radius: 8px;
-    border: 2px solid #000;
-    transform: scale(0.9);
-    cursor: pointer;
-}
-
-main .container-about-us .content-about-us .content-img-integrant img:hover{
-    transform: scale(1);
-    border: 2px solid #C22852;
-    transition: all ease 0.3s;
-}
-
-
-main .container-about-us .content-button-about{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-main .container-about-us .content-button-about button{
-    padding: 0.8rem 1rem;
-    font-size: 25px;
-    border-radius: 5px;
-    border: none;
-    background-color: #bb1541;
-    color: #f1f1f1;
-    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 6px 0px #000000bf;
+    -moz-box-shadow: 0px 0px 6px 0px #000000bf;
+    box-shadow: 0px 0px 6px 0px #000000bf;
 }
 
 footer{
@@ -367,11 +374,11 @@ footer .content-map{
 
 footer .content-map iframe{
     width: 100%;
-    height: 300px;
+    height: 200px;
 }
 
 footer .content-logo-footer img{
-    width: 200px;
+    width: 150px;
 }
 
 /* The Modal (background) */
@@ -452,11 +459,26 @@ footer .content-logo-footer img{
     }
 }
 
-@media(max-width: 768px){
-    main .container-about-us .content-about-us{
-        flex-direction: column-reverse;
-        text-align: center;
-        height: 350px;
+@media(max-width: 630px){
+    .navbar-toggler{
+        display: block;
+    }
+
+    .content-logout a{
+        display: none;
+    }
+
+    .content-desktop-nav{
+        display: none;
+    }
+
+    .content-login-desktop{
+        display: none;
+    }
+
+    .content-login-mobile{
+        list-style: none;
+        padding: 0;
     }
 
     main .container-about-us .content-about-us .content-description-about{
@@ -476,14 +498,6 @@ footer .content-logo-footer img{
         flex-direction: column;
         gap: 20px;
     }
-
-    footer .content-map{
-        width: 425px;
-    }
-    
-    footer .content-map iframe{
-        height: 250px;
-    } 
 }
 
 @media(max-width: 425px){
@@ -509,6 +523,10 @@ footer .content-logo-footer img{
 
     header .content-login{
         display: none !important;
+    }
+
+    main .container-slider-types-cakes{
+        margin-top: 0;
     }
 
     main .container-slider-types-cakes img{
@@ -558,8 +576,4 @@ footer .content-logo-footer img{
     footer .content-map{
         width: 310px;
     }
-    
-    footer .content-map iframe{
-        height: 250px;
-    } 
 }

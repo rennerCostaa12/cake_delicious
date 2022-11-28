@@ -33,119 +33,181 @@ $lnameUser = $_SESSION['last_name'];
     <script src="https://kit.fontawesome.com/97878bd3c0.js" crossorigin="anonymous"></script>
     <title>Cake Delicious | Pedido - Bolo de Chá</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="./style/welcome.css">
     <link rel="stylesheet" href="./style/pagina_bolos.css">
 </head>
 
 <body>
     <header id="home">
-        <div class="content-logo">
-            <img src="./assets/logo.png" alt="logo">
-            <button id="btn-open-nav-mobile">
-                <i class="fas fa-sort-down"></i>
-            </button>
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="welcome.php#home">HOME</a>
-                </li>
-                <li>
-                    <a href="welcome.php#servicos">SERVIÇOS</a>
-                </li>
-                <li>
-                    <a href="welcome.php#quem-somos">QUEM SOMOS</a>
-                </li>
-                <li>
-                    <a href="welcome.php#contatos">CONTATOS</a>
-                </li>
-            </ul>
+        <nav class="navbar bg-light fixed-top">
+            <div class="container-fluid">
+                <img src="./assets/logo.png" alt="logo">
+                <ul class="content-desktop-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="welcome.php#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="welcome.php#servicos">PRODUTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="welcome.php#sobre-nos">SOBRE NÓS</a>
+                    </li>
+                </ul>
+                <div class="content-login-and-nav">
+                    <?php if ($isLogged) : ?>
+                        <ul class="content-login-desktop">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i><?php echo $fnameUser . " " . $lnameUser ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="meus_pedidos.php">Meus Pedidos</a></li>
+                                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <?php else : ?>
+                        <div class="content-logout">
+                            <a href="login.php">Fazer Login</a>
+                            <a href="cadastro_usuario.php">Cadastrar-ser</a>
+                        </div>
+                    <?php endif; ?>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <div></div>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="welcome.php#home">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="welcome.php#servicos">PRODUTOS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="welcome.php#sobre-nos">SOBRE NÓS</a>
+                            </li>
+                        </ul>
+
+                        <?php if ($isLogged) : ?>
+                            <ul class="content-login-mobile">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-user"></i><?php echo $fnameUser . " " . $lnameUser ?>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="meus_pedidos.php">Meus Pedidos</a></li>
+                                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php else : ?>
+                            <div class="content-logout">
+                                <a href="login.php">Fazer Login</a>
+                                <a href="cadastro_usuario.php">Cadastrar-ser</a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <?php if ($isLogged) : ?>
-            <div class="content-login">
-                <span><?php echo "$fnameUser $lnameUser" ?></span>
-                <a href="meus_pedidos.php">Meus Pedidos</a>
-                <a href="logout.php">Sair da conta</a>
-            </div>
-        <?php else : ?>
-            <div class="content-login">
-                <a href="./cadastro_usuario.php">Cadastre-se</a>
-                <a href="./login.php">Login</a>
-            </div>
-        <?php endif; ?>
     </header>
 
     <div class="card">
         <img class="card_img" src="./assets/bolo_cha_banner.jpg" alt="Bolo de casamento">
-        <h2 class="card_titulo">O Bolo perfeito para o seu chá</h2>
 
-        <span class="card_descricao">
-            Confira abaixo algumas opções para montar o bolo ideal para o seu casamento.
-        </span>
-        <br>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="card_form">
-            <h3 class="card_form_titulo">Escolha seu bolo</h3>
+            <h1 class="card_form_titulo">Escolha seu bolo de chá</h1>
 
             <div class="card_form_div">
-                <label for="qnt_andares">Quantidade de andares</label><br>
+                <label class="type-labels" for="tema">Tema do bolo</label><br>
+                <input class="input-theme-cake" type="text" id="tema" name="tema">
+            </div>
+
+            <div class="card_form_div">
+                <label class="type-labels" for="qnt_andares">Quantidade de andares</label><br>
                 <select name="qnt_andares" id="qnt_andares">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                 </select>
+            </div>
 
+            <div class="card_form_div">
+                <h3>Tipo de massa</h3>
+
+                <div class="content-inputs-type-radio">
+                    <input type="radio" id="amanteigada" name="tipo_massa" value="Amanteigada">
+                    <label for="amanteigada">Amanteigada</label><br>
+                    <input type="radio" id="pao-de-lo" name="tipo_massa" value="Pão de ló">
+                    <label for="pao-de-lo">Pão de ló</label><br>
+                    <input type="radio" id="red-velvet" name="tipo_massa" value="Red Velvet">
+                    <label for="red-velvet">Red Velvet</label><br>
+                    <input type="radio" id="mocaccino" name="tipo_massa" value="Mocaccino">
+                    <label for="mocaccino">Mocaccino</label><br>
+                </div>
             </div>
             <div class="card_form_div">
-                <label>Tipo de massa:</label><br>
-                <select name="tipo_massa" id="massa">
-                    <option value="" selected disabled>Selecione</option>
-                    <option value="Amanteigada">Amanteigada</option>
-                    <option value="Pão de ló">Pão de ló</option>
-                    <option value="Red Velvet">Red Velvet</option>
-                    <option value="Mocaccino">Mocaccino</option>
-                </select>
+                <h3>Recheio</h3>
+
+                <div class="content-inputs-type-radio">
+                    <input type="radio" id="chocolate" name="recheio" value="Chocolate">
+                    <label for="chocolate">Chocolate</label><br>
+                    <input type="radio" id="beijinho" name="recheio" value="Beijinho">
+                    <label for="beijinho">Beijinho</label><br>
+                    <input type="radio" id="nutela" name="recheio" value="Nutela">
+                    <label for="nutela">Nutela</label><br>
+                    <input type="radio" id="4leites" name="recheio" value="4Leites">
+                    <label for="4leites">4Leites</label><br>
+                </div>
             </div>
-            <div class="card_form_div">
-                <label>Recheio:</label><br>
-                <select name="recheio" id="recheio">
-                    <option value="" selected disabled>Selecione</option>
-                    <option value="Chocolate">Chocolate</option>
-                    <option value="Beijinho">Beijinho</option>
-                    <option value="Nutela">Nutela</option>
-                    <option value="4Leites">4Leites</option>
-                    <option value="Ninho">Ninho</option>
-                    <option value="Doce de leite">Doce de leite</option>
-                </select>
-            </div>
+
             <label for="check_cobertura">Deseja inserir cobertura?</label>
             <input id="check_cobertura" name="check_cobertura" type="checkbox">
             <div id="content-cobertura" class="card_form_div">
-                <label>Cobertura:</label><br>
-                <select name="cobertura" id="cobertura">
-                    <option value="" selected disabled>Selecione</option>
-                    <option value="Chantilly">Chantilly</option>
-                    <option value="Pasta de leite ninho">Pasta de leite ninho</option>
-                    <option value="Pasta americana">Pasta americana</option>
-                    <option value="Ninho">Ninho</option>
-                </select>
-            </div>
-            <div class="card_form_div">
-                <label>Alguma observação?</label><br>
-                <textarea rows="2" id="observacao" name="observacao"></textarea>
-            </div>
-            <div class="card_form_div">
-                <label>Data de entrega: </label><br>
-                <input name="receipt_date" type="datetime-local">
+                <h3>Coberturas disponíveis</h3>
+
+                <div class="content-inputs-type-radio">
+                    <input type="radio" id="chantilly" name="cobertura" value="Chantilly">
+                    <label for="chantilly">Chantilly</label><br>
+                    <input type="radio" id="pasta-de-leite-ninho" name="cobertura" value="Pasta de leite ninho">
+                    <label for="pasta-de-leite-ninho">Pasta de leite ninho</label><br>
+                    <input type="radio" id="pasta-americana" name="cobertura" value="Pasta americana">
+                    <label for="pasta-americana">Pasta americana</label><br>
+                    <input type="radio" id="ninho" name="cobertura" value="Ninho">
+                    <label for="ninho">Ninho</label><br>
+                </div>
             </div>
 
             <div class="card_form_div">
-                <label>Frete:</label><br>
-                <select name="frete">
+                <label class="type-labels">Frete:</label><br>
+                <select id="isShipping" name="frete">
                     <option value="" selected disabled>Selecione</option>
                     <option value="buscar">Ir buscar</option>
                     <option value="frete">Frete</option>
                 </select>
+            </div>
+
+            <div class="card_form_div">
+                <label class="type-labels">Alguma observação?</label><br>
+                <textarea rows="2" id="observacao" name="observacao"></textarea>
+            </div>
+
+            <div class="card_form_div">
+                <div class="content-values-cake">
+                    <input type="text" id="value-money-cake" class="values_cake_input" name="value_cake_money" value="0" readonly>
+                    <input type="text" id="value-days-shipping" class="values_cake_input" name="receipt_date" value="0" readonly>
+                    <span id="viewfinder-value-shipping"></span>
+                </div>
             </div>
 
             <button class="card_form_button" type="submit">Enviar pedido</button>

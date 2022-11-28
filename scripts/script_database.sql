@@ -28,11 +28,13 @@ CREATE TABLE cakes(
     user_id INTEGER,
     size_cake INTEGER,
     type_pasta VARCHAR,
-    receipt_date TIMESTAMP,
+    receipt_date BIGINT,
     filling VARCHAR,
     roof VARCHAR,
     note VARCHAR,
     price DOUBLE PRECISION,
+    theme_cake VARCHAR,
+    url_image VARCHAR,
     isshipping BOOLEAN
 );
 
@@ -43,7 +45,6 @@ CREATE TABLE assesstments(
     id_assesstment SERIAL PRIMARY KEY,
     user_id INTEGER,
     comment TEXT,
-    avaliation INTEGER,
     created TIMESTAMP
 );
 

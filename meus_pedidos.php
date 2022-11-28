@@ -33,82 +33,132 @@ $lnameUser = $_SESSION['last_name'];
     <script src="https://kit.fontawesome.com/97878bd3c0.js" crossorigin="anonymous"></script>
     <title>Cake Delicious | Meus Pedidos</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="./style/welcome.css">
     <link rel="stylesheet" href="./style/meus_pedidos.css">
 </head>
 
 <body>
     <header id="home">
-        <div class="content-logo">
-            <img src="./assets/logo.png" alt="logo">
-            <button id="btn-open-nav-mobile">
-                <i class="fas fa-sort-down"></i>
-            </button>
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="welcome.php#home">HOME</a>
-                </li>
-                <li>
-                    <a href="welcome.php#servicos">SERVIÇOS</a>
-                </li>
-                <li>
-                    <a href="welcome.php#quem-somos">QUEM SOMOS</a>
-                </li>
-                <li>
-                    <a href="welcome.php#contatos">CONTATOS</a>
-                </li>
-            </ul>
+        <nav class="navbar bg-light fixed-top">
+            <div class="container-fluid">
+                <img src="./assets/logo.png" alt="logo">
+                <ul class="content-desktop-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="welcome.php#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="welcome.php#servicos">PRODUTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="welcome.php#sobre-nos">SOBRE NÓS</a>
+                    </li>
+                </ul>
+                <div class="content-login-and-nav">
+                    <?php if ($isLogged) : ?>
+                        <ul class="content-login-desktop">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i><?php echo $fnameUser . " " . $lnameUser ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="meus_pedidos.php">Meus Pedidos</a></li>
+                                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <?php else : ?>
+                        <div class="content-logout">
+                            <a href="login.php">Fazer Login</a>
+                            <a href="cadastro_usuario.php">Cadastrar-ser</a>
+                        </div>
+                    <?php endif; ?>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <div></div>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="welcome.php#home">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="welcome.php#servicos">PRODUTOS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="welcome.php#sobre-nos">SOBRE NÓS</a>
+                            </li>
+                        </ul>
+
+                        <?php if ($isLogged) : ?>
+                            <ul class="content-login-mobile">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-user"></i><?php echo $fnameUser . " " . $lnameUser ?>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="meus_pedidos.php">Meus Pedidos</a></li>
+                                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php else : ?>
+                            <div class="content-logout">
+                                <a href="login.php">Fazer Login</a>
+                                <a href="cadastro_usuario.php">Cadastrar-ser</a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <?php if ($isLogged) : ?>
-            <div class="content-login">
-                <span><?php echo "$fnameUser $lnameUser" ?></span>
-                <a href="meus_pedidos.php">Meus Pedidos</a>
-                <a href="logout.php">Sair da conta</a>
-            </div>
-        <?php else : ?>
-            <div class="content-login">
-                <a href="./cadastro_usuario.php">Cadastre-se</a>
-                <a href="./login.php">Login</a>
-            </div>
-        <?php endif; ?>
     </header>
 
-    <div>
+    <main>
         <h1 class="title-page">Meus Pedidos</h1>
 
-        <div class="content-table">
-            <table>
+        <div class="table-responsive">
+            <table class="table table-striped">
                 <thead>
-                    <th>Categoria</th>
-                    <th>Andares</th>
-                    <th>Tipo de massa</th>
-                    <th>Data de entrega</th>
-                    <th>Recheio</th>
-                    <th>Cobertura</th>
-                    <th>Observação</th>
-                    <th>Preço</th>
-                    <th>É frete?</th>
+                    <tr>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Tema</th>
+                        <th scope="col">Andares</th>
+                        <th scope="col">Tipo de massa</th>
+                        <th scope="col">Data de entrega</th>
+                        <th scope="col">Recheio</th>
+                        <th scope="col">Cobertura</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Frete?</th>
+                        <th scope="col">Observação</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($pdo->query($getAllMyRequests) as $data) : ?>
                         <tr>
                             <td><?php echo $data['name_category'] ?></td>
+                            <td><?php echo $data['theme_cake'] ? $data['theme_cake'] : "..." ?></td>
                             <td><?php echo $data['size_cake'] ?></td>
                             <td><?php echo $data['type_pasta'] ?></td>
-                            <td><?php echo $data['receipt_date'] ?></td>
+                            <td><?php echo $data['receipt_date'] . " Dias" ?></td>
                             <td><?php echo $data['filling'] ?></td>
                             <td><?php echo $data['roof'] ? $data['roof'] : "Sem cobertura" ?></td>
-                            <td><?php echo $data['note'] ?></td>
                             <td id="money_cake"><?php echo $data['price'] ?></td>
                             <td><?php echo $data['isshipping'] ? "Sim" : "Não" ?></td>
+                            <td><?php echo $data['note'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>
         </div>
-    </div>
+    </main>
 
     <footer id="contatos">
         <div class="content-logo-footer">

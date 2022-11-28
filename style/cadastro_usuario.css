@@ -1,145 +1,142 @@
-/*geral*/
 *{
-	margin: 0;
 	padding: 0;
+	margin: 0;
 	box-sizing: border-box;
-	font-family: Helvetica,sans-serif;
-	color: #323232;
-	border: none;
 }
-input,label {
-	display: block;
+
+body{
+    background-color: #ee3166 !important;
+}
+
+.container-cadastro-usuario{
 	width: 100%;
 }
-input:focus, label:focus{
+
+.content-cadastro-usuario{
+	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	flex-direction: row-reverse;
+	gap: 20px;
+}
+
+.content-form{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content-form form{
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content-form form h1{
+    font-size: 40px;
+    margin-bottom: 1rem;
+}
+
+.content-form form input{
+    padding: 0.5rem;
+    font-size: 16px;
+    margin-bottom: 1rem;
+    border: none;
+    border-bottom: 1px solid #000 !important;
 	outline: none;
 }
 
-body {
-	padding-top: 5vh;
-	background-color: #d7557b;
-	background-size: cover;
-	
+.content-form form button{
+    font-size: 18px;
+    padding: 0.5rem 1rem;
+    background-color: #ff69b4;
+    border: none;
+    color: #f1f1f1;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
-/*posicion main-container*/
-#main-container {
-	width: 500px;
-	margin-right: auto;
-	margin-left:auto;
-	background-color: beige;
-	border-radius: 10px;
-	padding: 25px;
+.content-form form button:hover{
+    transition: all ease 0.3s;
+    background-color: #f72f93;
 }
-#main-container h1{
-	text-align: center;
-	margin-bottom: 25px;
-	font-size: 1.5rem;
-}
-/*formulário*/
-form {
+
+.content-inputs{
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	justify-content: center;
-}
-.full-box{
-	flex: 1 1 100%;
-	position: relative;
-
-}
-.half-box{
-	flex: 1 1 45%;
-	position: relative;
-
-}
-.spacing {
-	margin-right: 2.5%;
-}
-label{
-	font-weight: bold;
-	font-size: .8rem;
-}
-input{
-	border-bottom: 2px solid #323232;
-	padding: 10px;
-	font-size: .9rem;
-	margin-bottom: 40px;
-}
-input:focus {
-	border-color: seagreen;
+	gap: 20px;
 }
 
-.content-button-form{
-	text-align: center;
+.image-background{
+	width: 100%;
+    height: 100vh;
+	background-image: url('./../assets/background-cadastro.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	filter: brightness(70%);
 }
 
-.content-button-form button{
-	background-color: #ff69b4;
-	color: #fff;
-	border: none;
-	border-radius: 9px;
-	cursor: pointer;
-	padding: 1rem;
-	text-align: center;
+.msg-login{
+	font-size: 18px;
+    margin: 1rem 0;
 }
-#agreement{
-	margin-right: 5px;
 
-}
-#agreement, #agreement-label{
-	display: inline-block;
-	width: auto;
+.msg-login a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #ff69b4;
 }
 
 #agreement-label span{
-	color: #ff69b4;
-	border-bottom: 1px solid #ff69b4;
+	color: #ee3166;
 	cursor: pointer;
+	font-weight: bold;
 }
 
-.template{
-	display: none;
-}
-footer {
-    text-align: center;
-    padding: 40px 0;
-}
-.copyright {
-    color: #FFFFFF;
-    font-size: 13px;
-    margin: 20px 0 0;
+.modal-body h1{
+	text-align: center !important;
+	font-size: 30px;
 }
 
-.modal-terms{
-	display: none;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	background-color: #00000096;
+@media(max-width: 768px){
+	.content-cadastro-usuario{
+		flex-direction: column;
+	}
+
+	.content-form{
+		margin: 1rem;
+	}
+
+	.image-background{
+		width: 100%;
+        height: 75vh;
+	}
 }
 
-.modal-terms .modal-content{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+@media(max-width: 580px){
 
-.modal-terms .modal-content .modal{
-	width: 650px;
-	background-color: #fff;
-	padding: 1.5rem 2rem;
-	border-radius: 5px;
-	text-align: center;
-}
+	form h1{
+		font-size: 25px !important;
+	}
 
-.modal-terms .modal-content .modal i{
-	display: flex;
-	justify-content: end;
-	font-size: 25px;
-	margin-bottom: 1rem;
-	cursor: pointer;
+	.content-inputs{
+		width: 100%;
+		flex-direction: column;
+	}
+
+	.content-form form input{
+		width: 100%;
+	}
+
+	.msg-login{
+		font-size: 16px;
+		text-align: center;
+	}
 }
