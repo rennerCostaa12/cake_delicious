@@ -31,23 +31,28 @@ let cakePrepare = {
     isShipping: false,
 };
 
-isShipping.addEventListener('change', () => {
-    if(isShipping.value === 'frete'){
-        cakePrepare.isShipping = true;
 
-        const sumTotalValue = cakePrepare.valueTypePasta + cakePrepare.valueRoofs + cakePrepare.valueFillings + cakePrepare.valueFloors + 6.50;
-        const valueFinal = formatNumber(sumTotalValue, 'BRL');
-    
-        valueMoneyCake.value = valueFinal;
-    }else{
-        cakePrepare.isShipping = false;    
+console.log(isShipping)
 
-        const sumTotalValue = cakePrepare.valueTypePasta + cakePrepare.valueRoofs + cakePrepare.valueFillings + cakePrepare.valueFloors;
-        const valueFinal = formatNumber(sumTotalValue, 'BRL');
+if(isShipping !== null){
+    isShipping.addEventListener('change', () => {
+        if(isShipping.value === 'frete'){
+            cakePrepare.isShipping = true;
     
-        valueMoneyCake.value = valueFinal;
-    }
-})
+            const sumTotalValue = cakePrepare.valueTypePasta + cakePrepare.valueRoofs + cakePrepare.valueFillings + cakePrepare.valueFloors + 6.50;
+            const valueFinal = formatNumber(sumTotalValue, 'BRL');
+        
+            valueMoneyCake.value = valueFinal;
+        }else{
+            cakePrepare.isShipping = false;    
+    
+            const sumTotalValue = cakePrepare.valueTypePasta + cakePrepare.valueRoofs + cakePrepare.valueFillings + cakePrepare.valueFloors;
+            const valueFinal = formatNumber(sumTotalValue, 'BRL');
+        
+            valueMoneyCake.value = valueFinal;
+        }
+    });
+}
  
 qntFloors.addEventListener('change', () => {
     switch (qntFloors.value) {

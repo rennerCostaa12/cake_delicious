@@ -134,6 +134,13 @@ input[type="radio"]:checked + label{
     align-items: center;
 }
 
+.values-cake{
+    border-radius: 5px;
+    border: 1px solid #D8557B;
+    padding: 0.5rem 0.8rem;
+    font-size: 18px;
+}
+
 .values_cake_input{
     font-size: 25px;
     font-weight: bold;

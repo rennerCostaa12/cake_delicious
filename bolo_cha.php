@@ -14,6 +14,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 $fnameUser = $_SESSION['first_name'];
 $lnameUser = $_SESSION['last_name'];
+$isAdmin = $_SESSION['isAdmin'];
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +65,9 @@ $lnameUser = $_SESSION['last_name'];
                                     <i class="fas fa-user"></i><?php echo $fnameUser . " " . $lnameUser ?>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <?php if ($isAdmin) : ?>
+                                        <li><a class="dropdown-item" href="cadastro_bolo_diversos.php">Adicionar bolo</a></li>
+                                    <?php endif; ?>
                                     <li><a class="dropdown-item" href="meus_pedidos.php">Meus Pedidos</a></li>
                                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                                 </ul>
@@ -270,7 +274,6 @@ $lnameUser = $_SESSION['last_name'];
         </div>
     </div>
 
-    <script src="./js/default.js"></script>
     <script src="./js/pagina_bolo.js"></script>
 </body>
 

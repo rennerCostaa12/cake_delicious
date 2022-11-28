@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($qntFloors || $typePasta || $filling || $roof || $note || $freteSelect || $theme_cake) {
             if($isShipping){
-                $sqlInsert = $pdo->prepare("INSERT INTO cakes (category_cake_id, user_id, size_cake, type_pasta, receipt_date, filling, roof, note, price, theme_cake, url_image, isshipping) VALUES (3, :user, :size_cake, :type_pasta, :receipt_date, :filling, :roof, :note, :price, :theme_cake, NULL, true);");
+                $sqlInsert = $pdo->prepare("INSERT INTO cakes (name_cake, category_cake_id, user_id, size_cake, type_pasta, receipt_date, filling, roof, note, price, theme_cake, url_image, isshipping) VALUES (NULL, 3, :user, :size_cake, :type_pasta, :receipt_date, :filling, :roof, :note, :price, :theme_cake, NULL, true);");
             }else{
-                $sqlInsert = $pdo->prepare("INSERT INTO cakes (category_cake_id, user_id, size_cake, type_pasta, receipt_date, filling, roof, note, price, theme_cake, url_image, isshipping) VALUES (3, :user, :size_cake, :type_pasta, :receipt_date, :filling, :roof, :note, :price, :theme_cake, NULL, false);");
+                $sqlInsert = $pdo->prepare("INSERT INTO cakes (name_cake, category_cake_id, user_id, size_cake, type_pasta, receipt_date, filling, roof, note, price, theme_cake, url_image, isshipping) VALUES (NULL, 3, :user, :size_cake, :type_pasta, :receipt_date, :filling, :roof, :note, :price, :theme_cake, NULL, false);");
             }
 
             $sqlInsert->bindParam(':user', $idUser);

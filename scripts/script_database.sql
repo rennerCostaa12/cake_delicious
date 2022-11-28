@@ -24,6 +24,7 @@ INSERT INTO category_cakes (id_category_cake, name_category) VALUES (4, 'Diverso
 
 CREATE TABLE cakes(
     id_cake SERIAL PRIMARY KEY,
+    name_cake VARCHAR,
     category_cake_id INTEGER,
     user_id INTEGER,
     size_cake INTEGER,

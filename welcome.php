@@ -13,6 +13,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 $fnameUser = $_SESSION['first_name'];
 $lnameUser = $_SESSION['last_name'];
+$isAdmin = $_SESSION['isAdmin'];
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +65,9 @@ $lnameUser = $_SESSION['last_name'];
                                     <i class="fas fa-user"></i><?php echo $fnameUser . " " . $lnameUser ?>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <?php if ($isAdmin) : ?>
+                                        <li><a class="dropdown-item" href="cadastro_bolo_diversos.php">Adicionar bolo</a></li>
+                                    <?php endif; ?>
                                     <li><a class="dropdown-item" href="meus_pedidos.php">Meus Pedidos</a></li>
                                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                                 </ul>
@@ -181,9 +185,9 @@ $lnameUser = $_SESSION['last_name'];
                     <img src="./assets/bolo_diversos_produto.png" alt="bolo diversos">
                     <h3>Bolos diversos</h3>
                     <?php if ($isLogged) : ?>
-                        <a href="login.php">Fazer pedido</a>
+                        <a href="bolo_diversos.php">Fazer pedido</a>
                     <?php else : ?>
-                        <a href="#">Fazer pedido</a>
+                        <a href="login.php">Fazer pedido</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -271,10 +275,9 @@ $lnameUser = $_SESSION['last_name'];
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <script src="./js/welcome.js"></script>
-    <script src="./js/default.js"></script>
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <script src="./js/welcome.js"></script>
     <script src="./js/data-aos.js"></script>
 </body>
 

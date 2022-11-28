@@ -2,6 +2,11 @@ main{
     margin-top: 5rem;
 }
 
+.title-not-receipt{
+    text-align: center;
+    margin: 8.9rem;
+}
+
 .title-page{
     text-align: center;
     margin: 2rem 0;

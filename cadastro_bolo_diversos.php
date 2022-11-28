@@ -1,5 +1,5 @@
 <?php
-include 'controllers/meus_pedidos_controller.php';
+include 'controllers/bolo_diversos.controller.php';
 
 session_start();
 
@@ -32,13 +32,13 @@ $isAdmin = $_SESSION['isAdmin'];
     <link rel="icon" type="image/x-icon" href="./assets/logo.png">
 
     <script src="https://kit.fontawesome.com/97878bd3c0.js" crossorigin="anonymous"></script>
-    <title>Cake Delicious | Meus Pedidos</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./style/welcome.css">
-    <link rel="stylesheet" href="./style/meus_pedidos.css">
+    <link rel="stylesheet" href="./style/pagina_bolos.css">
+    <title>Cake Delicious | Cadastro - Bolo diversos</title>
 </head>
 
 <body>
@@ -126,107 +126,48 @@ $isAdmin = $_SESSION['isAdmin'];
     </header>
 
     <main>
+        <div class="card">
+            <img class="card_img" src="./assets/bolo_de_casamento_banner.jpg" alt="Bolo de casamento">
 
-        <?php if ($pdo->query('select count(*) from cakes')->fetchColumn() >= 1) : ?>
-            <h1 class="title-page">Meus Pedidos</h1>
+            <?php
+            echo "<h1>$errorMessage</h1>";
+            ?>
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="card_form">
+                <h1 class="card_form_titulo">Cadastro de bolos diversos</h1>
 
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Tema</th>
-                            <th scope="col">Andares</th>
-                            <th scope="col">Tipo de massa</th>
-                            <th scope="col">Data de entrega</th>
-                            <th scope="col">Recheio</th>
-                            <th scope="col">Cobertura</th>
-                            <th scope="col">Preço</th>
-                            <th scope="col">Frete?</th>
-                            <th scope="col">Observação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($pdo->query($getAllMyRequests) as $data) : ?>
-                            <?php if ($data['name_category'] !== 'Diversos') :  ?>
-                                <tr>
-                                    <td><?php echo $data['name_category'] ?></td>
-                                    <td><?php echo $data['theme_cake'] ? $data['theme_cake'] : "..." ?></td>
-                                    <td><?php echo $data['size_cake'] ?></td>
-                                    <td><?php echo $data['type_pasta'] ?></td>
-                                    <td><?php echo $data['receipt_date'] . " Dias" ?></td>
-                                    <td><?php echo $data['filling'] ?></td>
-                                    <td><?php echo $data['roof'] ? $data['roof'] : "Sem cobertura" ?></td>
-                                    <td id="money_cake"><?php echo $data['price'] ?></td>
-                                    <td><?php echo $data['isshipping'] ? "Sim" : "Não" ?></td>
-                                    <td><?php echo $data['note'] ?></td>
-                                </tr>
-                            <?php endif; ?>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
+                <div class="card_form_div">
+                    <label class="type-labels" for="url-imagem">Url da imagem</label><br>
+                    <input class="input-theme-cake" type="text" id="url-imagem" name="url-imagem" required>
+                </div>
 
-        <?php else : ?>
+                <div class="card_form_div">
+                    <label class="type-labels" for="nome-bolo">Nome do bolo</label><br>
+                    <input class="input-theme-cake" type="text" id="nome-bolo" name="nome-bolo" required>
+                </div>
 
-            <h1 class="title-not-receipt">NENHUM PEDIDO</h1>
-        <?php endif; ?>
-    </main>
 
-    <footer id="contatos">
-        <div class="content-logo-footer">
-            <img src="./assets/logo.png" alt="logo">
-        </div>
-
-        <div class="content-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.1990300256434!2d-38.57710688583541!3d-3.7668214972596052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74c01797285bb%3A0xa8888be05f940563!2sCentro%20Universit%C3%A1rio%20Est%C3%A1cio%20-%20Campus%20Parangaba!5e0!3m2!1spt-BR!2sbr!4v1667871175700!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </footer>
-
-    <div class="modal">
-        <div class="modal-content">
-            <div class="content-btn-close-modal">
-                <button>X</button>
-            </div>
-
-            <ul>
-                <li>
-                    <a href="#home">HOME</a>
-                </li>
-                <li>
-                    <a href="#servicos">SERVIÇOS</a>
-                </li>
-                <li>
-                    <a href="#quem-somos">QUEM SOMOS</a>
-                </li>
-                <li>
-                    <a href="#contatos">CONTATOS</a>
-                </li>
-            </ul>
-            <?php if ($isLogged) : ?>
-                <div class="content-login-mobile">
-                    <span><?php echo "$fnameUser $lnameUser" ?></span>
-                    <div>
-                        <a href="meus_pedidos.php">Meus Pedidos</a>
-                    </div>
-                    <div>
-                        <a href="logout.php">Sair da conta</a>
+                <div class="card_form_div">
+                    <div class="content-values-cake">
+                        <label class="type-labels" for="url-imagem">Valor do bolo</label><br>
+                        <input class="values-cake" type="number" id="price-cake" step="0.01" name="price-cake" value="0" required>
                     </div>
                 </div>
-            <?php else : ?>
-                <div class="content-login-mobile">
-                    <div>
-                        <a href="./cadastro_usuario.php">Cadastre-se</a>
-                    </div>
-                    <div>
-                        <a href="./login.php">Login</a>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
 
-    <script src="./js/meus_pedidos.js"></script>
+                <button class="card_form_button" type="submit">Cadastrar Bolo</button>
+            </form>
+        </div>
+
+        <footer id="contatos">
+            <div class="content-logo-footer">
+                <img src="./assets/logo.png" alt="logo">
+            </div>
+
+            <div class="content-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.1990300256434!2d-38.57710688583541!3d-3.7668214972596052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74c01797285bb%3A0xa8888be05f940563!2sCentro%20Universit%C3%A1rio%20Est%C3%A1cio%20-%20Campus%20Parangaba!5e0!3m2!1spt-BR!2sbr!4v1667871175700!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </footer>
+
+        <script src="./js/pagina_bolo.js"></script>
 </body>
 
 </html>

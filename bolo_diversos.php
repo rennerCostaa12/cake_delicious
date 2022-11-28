@@ -1,5 +1,5 @@
 <?php
-include 'controllers/meus_pedidos_controller.php';
+include 'controllers/bolo_diversos.controller.php';
 
 session_start();
 
@@ -25,23 +25,26 @@ $isAdmin = $_SESSION['isAdmin'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="./style/bolos_diversos.css">
+    <link rel="stylesheet" href="./style/welcome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./assets/logo.png">
 
-    <script src="https://kit.fontawesome.com/97878bd3c0.js" crossorigin="anonymous"></script>
-    <title>Cake Delicious | Meus Pedidos</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./style/welcome.css">
-    <link rel="stylesheet" href="./style/meus_pedidos.css">
+    <script src="https://kit.fontawesome.com/97878bd3c0.js" crossorigin="anonymous"></script>
+
+    <title>Cake Delicious | Bolos Diversos</title>
 </head>
 
 <body>
+
     <header id="home">
         <nav class="navbar bg-light fixed-top">
             <div class="container-fluid">
@@ -76,7 +79,7 @@ $isAdmin = $_SESSION['isAdmin'];
                     <?php else : ?>
                         <div class="content-logout">
                             <a href="login.php">Fazer Login</a>
-                            <a href="cadastro_usuario.php">Cadastrar-ser</a>
+                            <a href="cadastro_usuario.php">Cadastrar-se</a>
                         </div>
                     <?php endif; ?>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -116,7 +119,7 @@ $isAdmin = $_SESSION['isAdmin'];
                         <?php else : ?>
                             <div class="content-logout">
                                 <a href="login.php">Fazer Login</a>
-                                <a href="cadastro_usuario.php">Cadastrar-ser</a>
+                                <a href="cadastro_usuario.php">Cadastrar-se</a>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -126,52 +129,19 @@ $isAdmin = $_SESSION['isAdmin'];
     </header>
 
     <main>
-
-        <?php if ($pdo->query('select count(*) from cakes')->fetchColumn() >= 1) : ?>
-            <h1 class="title-page">Meus Pedidos</h1>
-
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Tema</th>
-                            <th scope="col">Andares</th>
-                            <th scope="col">Tipo de massa</th>
-                            <th scope="col">Data de entrega</th>
-                            <th scope="col">Recheio</th>
-                            <th scope="col">Cobertura</th>
-                            <th scope="col">Preço</th>
-                            <th scope="col">Frete?</th>
-                            <th scope="col">Observação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($pdo->query($getAllMyRequests) as $data) : ?>
-                            <?php if ($data['name_category'] !== 'Diversos') :  ?>
-                                <tr>
-                                    <td><?php echo $data['name_category'] ?></td>
-                                    <td><?php echo $data['theme_cake'] ? $data['theme_cake'] : "..." ?></td>
-                                    <td><?php echo $data['size_cake'] ?></td>
-                                    <td><?php echo $data['type_pasta'] ?></td>
-                                    <td><?php echo $data['receipt_date'] . " Dias" ?></td>
-                                    <td><?php echo $data['filling'] ?></td>
-                                    <td><?php echo $data['roof'] ? $data['roof'] : "Sem cobertura" ?></td>
-                                    <td id="money_cake"><?php echo $data['price'] ?></td>
-                                    <td><?php echo $data['isshipping'] ? "Sim" : "Não" ?></td>
-                                    <td><?php echo $data['note'] ?></td>
-                                </tr>
-                            <?php endif; ?>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
-
-        <?php else : ?>
-
-            <h1 class="title-not-receipt">NENHUM PEDIDO</h1>
-        <?php endif; ?>
+        <h1>Bolos diversos</h1>
+        <div class="content-cakes">
+            <?php foreach ($pdo->query($getAllCakesSeveral) as $data) : ?>
+                <div class="cakes-cards">
+                    <img src="<?php echo $data['url_image'] ?>" alt="Image <?php echo $data['name_cake'] ?>">
+                    <h2><?php echo $data['name_cake']?></h2>
+                    <span id="price-cake"><?php echo $data['price'] ?></span>
+                    <button>Comprar</button>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </main>
+
 
     <footer id="contatos">
         <div class="content-logo-footer">
@@ -183,50 +153,18 @@ $isAdmin = $_SESSION['isAdmin'];
         </div>
     </footer>
 
-    <div class="modal">
-        <div class="modal-content">
-            <div class="content-btn-close-modal">
-                <button>X</button>
-            </div>
+    <script>
+        const listPrices = document.querySelectorAll('#price-cake');
 
-            <ul>
-                <li>
-                    <a href="#home">HOME</a>
-                </li>
-                <li>
-                    <a href="#servicos">SERVIÇOS</a>
-                </li>
-                <li>
-                    <a href="#quem-somos">QUEM SOMOS</a>
-                </li>
-                <li>
-                    <a href="#contatos">CONTATOS</a>
-                </li>
-            </ul>
-            <?php if ($isLogged) : ?>
-                <div class="content-login-mobile">
-                    <span><?php echo "$fnameUser $lnameUser" ?></span>
-                    <div>
-                        <a href="meus_pedidos.php">Meus Pedidos</a>
-                    </div>
-                    <div>
-                        <a href="logout.php">Sair da conta</a>
-                    </div>
-                </div>
-            <?php else : ?>
-                <div class="content-login-mobile">
-                    <div>
-                        <a href="./cadastro_usuario.php">Cadastre-se</a>
-                    </div>
-                    <div>
-                        <a href="./login.php">Login</a>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
+        for(let x in listPrices){
+            let valueListPrices = listPrices[x].textContent;
+            let valueFormated = Number(valueListPrices).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 
-    <script src="./js/meus_pedidos.js"></script>
+            console.log(valueFormated)
+
+            listPrices[x].innerHTML = valueFormated;
+        }
+    </script>
 </body>
 
 </html>
